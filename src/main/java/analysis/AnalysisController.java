@@ -25,9 +25,9 @@ public class AnalysisController {
         System.out.println(file.getOriginalFilename());
         System.out.println(file.getName());
 
-        if (file.getContentType() == "text/plain") {
+        if (file.getContentType().equals("text/plain")) {
             StringChomper chomper = new StringChomper(file);
-            return "You successfully uploaded " + file.getOriginalFilename() + "!";
+            return chomper.totalWordAnalysis();
         } else {
             return "Sorry - only text/plain filetypes are allowed in this version.";
         }

@@ -39,12 +39,12 @@ public class TextProcessorIT {
         assertThat(response.getBody(), equalTo(
                 "Word count = 9\n" +
                         "Average word length = 4.556\n" +
-                        "Number of words of length 1\n" +
-                        "Number of words of length 2\n" +
-                        "Number of words of length 3\n" +
-                        "Number of words of length 4\n" +
-                        "Number of words of length 5\n" +
-                        "Number of words of length 7\n" +
+                        "Number of words of length 1 is 1\n" +
+                        "Number of words of length 2 is 1\n" +
+                        "Number of words of length 3 is 1\n" +
+                        "Number of words of length 4 is 2\n" +
+                        "Number of words of length 5 is 2\n" +
+                        "Number of words of length 7 is 1\n" +
                         "Number of words of length 10 is 1\n" +
                         "The most frequently occurring word length is 2, for word lengths of 4 & 5\n"));
     }

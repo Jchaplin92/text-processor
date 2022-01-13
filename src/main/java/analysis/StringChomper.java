@@ -64,13 +64,13 @@ public class StringChomper {
 
     private String makeStatementOnMostFrequentWordLength(Integer maxlengthFrequency, Integer[] mostFrequentWordLengths) {
         if (mostFrequentWordLengths.length == 1)
-            return String.format("The most frequently occurring word length is %d, for a word length of %d", maxlengthFrequency, mostFrequentWordLengths[0]);
+            return String.format("The most frequently occurring word length is %d, for a word length of %d\n", maxlengthFrequency, mostFrequentWordLengths[0]);
 
         String mostFrequentStatement = String.format("The most frequently occurring word length is %d, for word lengths of ", maxlengthFrequency);
         for (int i = 0; i < mostFrequentWordLengths.length - 2; i++) {
             mostFrequentStatement += String.format("%d, ", mostFrequentWordLengths[i]);
         }
-        mostFrequentStatement += String.format("%d & %d", mostFrequentWordLengths[mostFrequentWordLengths.length - 2], mostFrequentWordLengths[mostFrequentWordLengths.length - 1]);
+        mostFrequentStatement += String.format("%d & %d\n", mostFrequentWordLengths[mostFrequentWordLengths.length - 2], mostFrequentWordLengths[mostFrequentWordLengths.length - 1]);
         return mostFrequentStatement;
     }
 

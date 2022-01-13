@@ -71,7 +71,7 @@ class StringChomperTest {
 
         String result = underTest.mostFrequentWordLengthsGiven();
 
-        assertThat(result, equalTo("The most frequently occurring word length is 2, for word lengths of 4 & 5"));
+        assertThat(result, equalTo("The most frequently occurring word length is 2, for word lengths of 4 & 5\n"));
     }
 
     @Test
@@ -81,7 +81,7 @@ class StringChomperTest {
 
         String result = underTest.mostFrequentWordLengthsGiven();
 
-        assertThat(result, equalTo("The most frequently occurring word length is 1, for word lengths of 2, 5 & 9"));
+        assertThat(result, equalTo("The most frequently occurring word length is 1, for word lengths of 2, 5 & 9\n"));
     }
 
     @Test
@@ -91,7 +91,7 @@ class StringChomperTest {
 
         String result = underTest.mostFrequentWordLengthsGiven();
 
-        assertThat(result, equalTo("The most frequently occurring word length is 1, for word lengths of 1, 2, 3, 5 & 9"));
+        assertThat(result, equalTo("The most frequently occurring word length is 1, for word lengths of 1, 2, 3, 5 & 9\n"));
     }
 
     @Test
@@ -101,7 +101,7 @@ class StringChomperTest {
 
         String result = underTest.mostFrequentWordLengthsGiven();
 
-        assertThat(result, equalTo("The most frequently occurring word length is 1, for a word length of 5"));
+        assertThat(result, equalTo("The most frequently occurring word length is 1, for a word length of 5\n"));
     }
 
     @Test
@@ -111,7 +111,7 @@ class StringChomperTest {
 
         String result = underTest.totalWordAnalysis();
 
-        System.out.println(result);
+        assertThat(result, equalTo("Word count = 9\nAverage word length = 4.556\nNumber of words of length 1 is 1\nNumber of words of length 2 is 1\nNumber of words of length 3 is 1\nNumber of words of length 4 is 2\nNumber of words of length 5 is 2\nNumber of words of length 7 is 1\nNumber of words of length 10 is 1\nThe most frequently occurring word length is 2, for word lengths of 4 & 5\n"));
     }
 
     private MultipartFile createMultipartFileForTest(String filePath) throws IOException {
