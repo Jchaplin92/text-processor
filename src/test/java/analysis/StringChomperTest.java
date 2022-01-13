@@ -17,45 +17,101 @@ class StringChomperTest {
     StringChomper underTest;
 
     @Test
-    void outputsCorrectNumberOfWords() throws IOException {
+    void outputsCorrectWordCount() throws IOException {
         MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/testinput-regularspacing.txt");
         underTest = new StringChomper(inputFile);
 
-        assertThat(underTest.getWordCountFromFile(), equalTo("Word count = 7"));
+        assertThat(underTest.getWordCountFromFile(), equalTo("Word count = 7\n"));
     }
 
     @Test
-    void handlesIrregularSpacing() throws IOException {
+    void handlesIrregularSpacingInWordCount() throws IOException {
         MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/testinput-irregularspacing.txt");
         underTest = new StringChomper(inputFile);
 
-        assertThat(underTest.getWordCountFromFile(), equalTo("Word count = 7"));
+        assertThat(underTest.getWordCountFromFile(), equalTo("Word count = 7\n"));
     }
 
     @Test
-    void handlesSpecialCharacters() throws IOException {
+    void handlesSpecialCharactersInWordCount() throws IOException {
         MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/testinput-specialcharacters.txt");
         underTest = new StringChomper(inputFile);
 
-        assertThat(underTest.getWordCountFromFile(), equalTo("Word count = 7"));
+        assertThat(underTest.getWordCountFromFile(), equalTo("Word count = 7\n"));
     }
 
     @Test
-    void generatesCorrectAverageWordLength() throws IOException {
-        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/testinput-specialcharacters.txt");
+    void generatesCorrectAverageWordLengthNotIncludingPeriods() throws IOException {
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example.txt");
         underTest = new StringChomper(inputFile);
 
-        assertThat(underTest.getAverageWordLength(), equalTo("Average word length = 5.429"));
+        assertThat(underTest.getAverageWordLength(), equalTo("Average word length = 4.556\n"));
     }
 
     @Test
     void generatesAnArrayOfCountPerWordLength() throws IOException {
-        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/testinput-regularspacing.txt");
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example.txt");
         underTest = new StringChomper(inputFile);
 
         String[] result = underTest.numberOfWordsPerWordLength();
 
-        assertThat(result[0], equalTo("Number of words of length 1 is 1"));
+        assertThat(result[0], equalTo("Number of words of length 1 is 1\n"));
+        assertThat(result[1], equalTo("Number of words of length 2 is 1\n"));
+        assertThat(result[2], equalTo("Number of words of length 3 is 1\n"));
+        assertThat(result[3], equalTo("Number of words of length 4 is 2\n"));
+        assertThat(result[4], equalTo("Number of words of length 5 is 2\n"));
+        assertThat(result[5], equalTo("Number of words of length 7 is 1\n"));
+        assertThat(result[6], equalTo("Number of words of length 10 is 1\n"));
+    }
+
+    @Test
+    void generatesMostFrequentWordLengths() throws IOException {
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example.txt");
+        underTest = new StringChomper(inputFile);
+
+        String result = underTest.mostFrequentWordLengthsGiven();
+
+        assertThat(result, equalTo("The most frequently occurring word length is 2, for word lengths of 4 & 5"));
+    }
+
+    @Test
+    void generatesMostFrequentWordLengthsForTriadOfEquallyFrequentLengths() throws IOException {
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example-three-words.txt");
+        underTest = new StringChomper(inputFile);
+
+        String result = underTest.mostFrequentWordLengthsGiven();
+
+        assertThat(result, equalTo("The most frequently occurring word length is 1, for word lengths of 2, 5 & 9"));
+    }
+
+    @Test
+    void generatesMostFrequentWordLengthsForQuintupleOfEquallyFrequentLengths() throws IOException {
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example-five-words.txt");
+        underTest = new StringChomper(inputFile);
+
+        String result = underTest.mostFrequentWordLengthsGiven();
+
+        assertThat(result, equalTo("The most frequently occurring word length is 1, for word lengths of 1, 2, 3, 5 & 9"));
+    }
+
+    @Test
+    void generatesMostFrequentWordLengthsForOneWordFile() throws IOException {
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example-one-word.txt");
+        underTest = new StringChomper(inputFile);
+
+        String result = underTest.mostFrequentWordLengthsGiven();
+
+        assertThat(result, equalTo("The most frequently occurring word length is 1, for a word length of 5"));
+    }
+
+    @Test
+    void generateCompleteWordAnalysis() throws IOException {
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example.txt");
+        underTest = new StringChomper(inputFile);
+
+        String result = underTest.totalWordAnalysis();
+
+        System.out.println(result);
     }
 
     private MultipartFile createMultipartFileForTest(String filePath) throws IOException {
