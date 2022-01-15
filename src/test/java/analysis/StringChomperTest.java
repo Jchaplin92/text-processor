@@ -42,7 +42,7 @@ class StringChomperTest {
 
     @Test
     void generatesCorrectAverageWordLengthNotIncludingPeriods() throws IOException {
-        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example.txt");
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/firstmost-example.txt");
         underTest = new StringChomper(inputFile);
 
         assertThat(underTest.getAverageWordLength(), equalTo("Average word length = 4.556\n"));
@@ -50,7 +50,7 @@ class StringChomperTest {
 
     @Test
     void generatesAnArrayOfCountPerWordLength() throws IOException {
-        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example.txt");
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/firstmost-example.txt");
         underTest = new StringChomper(inputFile);
 
         String[] result = underTest.numberOfWordsPerWordLength();
@@ -66,7 +66,7 @@ class StringChomperTest {
 
     @Test
     void generatesMostFrequentWordLengths() throws IOException {
-        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example.txt");
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/firstmost-example.txt");
         underTest = new StringChomper(inputFile);
 
         String result = underTest.mostFrequentWordLengthsGiven();
@@ -76,7 +76,7 @@ class StringChomperTest {
 
     @Test
     void generatesMostFrequentWordLengthsForTriadOfEquallyFrequentLengths() throws IOException {
-        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example-three-words.txt");
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/firstmost-example-three-words.txt");
         underTest = new StringChomper(inputFile);
 
         String result = underTest.mostFrequentWordLengthsGiven();
@@ -86,7 +86,7 @@ class StringChomperTest {
 
     @Test
     void generatesMostFrequentWordLengthsForQuintupleOfEquallyFrequentLengths() throws IOException {
-        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example-five-words.txt");
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/firstmost-example-five-words.txt");
         underTest = new StringChomper(inputFile);
 
         String result = underTest.mostFrequentWordLengthsGiven();
@@ -96,7 +96,7 @@ class StringChomperTest {
 
     @Test
     void generatesMostFrequentWordLengthsForOneWordFile() throws IOException {
-        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example-one-word.txt");
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/firstmost-example-one-word.txt");
         underTest = new StringChomper(inputFile);
 
         String result = underTest.mostFrequentWordLengthsGiven();
@@ -106,7 +106,7 @@ class StringChomperTest {
 
     @Test
     void generateCompleteWordAnalysis() throws IOException {
-        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/synalogik-example.txt");
+        MultipartFile inputFile = createMultipartFileForTest("src/main/resources/analysis/firstmost-example.txt");
         underTest = new StringChomper(inputFile);
 
         String result = underTest.totalWordAnalysis();

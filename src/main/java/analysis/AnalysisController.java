@@ -19,8 +19,7 @@ public class AnalysisController {
     }
 
     @PostMapping("/")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) throws IOException {
+    public String handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
         System.out.println(file.getContentType());
         System.out.println(file.getOriginalFilename());
         System.out.println(file.getName());

@@ -23,14 +23,14 @@ public class TextProcessorIT {
     private int port;
 
     @Test
-    public void getHello() throws Exception {
+    public void getHello() {
         ResponseEntity<String> response = restTemplate.getForEntity("/", String.class);
         assertThat(response.getBody(), equalTo("Welcome to textual analysis! Enter your text file."));
     }
 
     @Test
-    public void shouldUploadFile() throws Exception {
-        ClassPathResource resource = new ClassPathResource("synalogik-example.txt", getClass());
+    public void shouldUploadFile() {
+        ClassPathResource resource = new ClassPathResource("firstmost-example.txt", getClass());
 
         MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
         map.add("file", resource);

@@ -2,7 +2,9 @@ package analysis;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -15,7 +17,7 @@ public class StringChomper {
         String content = new String(inputFile.getBytes());
         this.words = content
                 .replaceAll("\\s+", " ")
-                .replaceAll("[,.]", "")
+                .replaceAll("[,.;:]", "")
                 .split(" ");
     }
 
