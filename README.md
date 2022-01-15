@@ -8,10 +8,10 @@
 ## Installation
 
 ### Packaging and running as a JAR file
-- you must have the Java Runtime Environment installed - check that you are at least version 8 with:
-`java -version` from command line.
-- `java -jar jarfilename.jar` to run
-- the app is running on localhost:8080 by default.
+1. you must have maven and the Java Runtime Environment installed - check that you are at least version 8 with:
+`java -version` from command line. Check maven is installed with `maven -version` from command line.
+2. `java -jar yourjarfilename.jar` to run. In this case the jar is `text-processor-1.0-SNAPSHOT.jar` in the `target` directory.
+3. the app is running on localhost:8080 by default.
 
 ### Running as an executable
 - this uses
